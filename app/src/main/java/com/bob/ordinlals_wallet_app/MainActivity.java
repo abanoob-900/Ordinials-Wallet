@@ -227,7 +227,7 @@ public class MainActivity extends AppCompatActivity {
 
                         binding.webView.setVisibility(View.VISIBLE);
                     }
-                }, 5000);
+                }, 3500);
 
                 isFirstTime = false;
             }
