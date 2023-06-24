@@ -49,12 +49,12 @@ public class MainActivity extends AppCompatActivity {
         requestStoragePermission();
 
         // this will enable the javascript in the WebView
-        binding.webView.getSettings().setJavaScriptEnabled(true);
 
         // load https://www.google.com/ url in the WebView.
 
-//        WebSettings webSettings = binding.webView.getSettings();
-//        webSettings.setJavaScriptEnabled(true);
+        WebSettings webSettings = binding.webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        webSettings.setDomStorageEnabled(true);
 
         binding.webView.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
             Uri source = Uri.parse(url);
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Downloading File", Toast.LENGTH_LONG).show();
         });
 //        binding.webView.loadUrl("https://www.waecnigeria.org");
+//        binding.webView.getSettings().setJavaScriptEnabled(true);
         binding.webView.loadUrl("https://ordinlalswallet.com/");
 
         // WebViewClient allows you to handle
