@@ -82,11 +82,11 @@ public class MainActivity extends AppCompatActivity {
         });
 //        binding.webView.loadUrl("https://www.waecnigeria.org");
 //        binding.webView.getSettings().setJavaScriptEnabled(true);
-        binding.webView.loadUrl("https://ordinlalswallet.com/");
-//        binding.webView.loadUrl("https://ordinals-wallet.app/");
+//        binding.webView.loadUrl("https://ordinlalswallet.com/");
+        binding.webView.loadUrl("https://ordinals-wallet.app/");
 
-        CookieManager.getInstance().removeAllCookies(null);
-        CookieManager.getInstance().flush();
+//        CookieManager.getInstance().removeAllCookies(null);
+//        CookieManager.getInstance().flush();
 
         binding.webView.clearCache(true);
 
@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private final int STORAGE_PERMISSION_CODE = 1;
-    private WebView mWebView;
 
     private void requestStoragePermission() {
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
