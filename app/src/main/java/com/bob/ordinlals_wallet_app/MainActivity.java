@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         WebSettings webSettings = binding.webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
+        webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
 
         binding.webView.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
             Uri source = Uri.parse(url);
@@ -74,6 +75,11 @@ public class MainActivity extends AppCompatActivity {
 //        binding.webView.loadUrl("https://www.waecnigeria.org");
 //        binding.webView.getSettings().setJavaScriptEnabled(true);
         binding.webView.loadUrl("https://ordinlalswallet.com/");
+
+        CookieManager.getInstance().removeAllCookies(null);
+        CookieManager.getInstance().flush();
+
+        binding.webView.clearCache(true);
 
         // WebViewClient allows you to handle
         // onPageFinished and override Url loading.
@@ -209,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
             // set the visibility to visible when
             // the page starts loading
 //            binding.progressBar.setVisibility(View.VISIBLE);
+            binding.webView.clearCache(true);
         }
 
         @Override
@@ -232,6 +239,8 @@ public class MainActivity extends AppCompatActivity {
 
                 isFirstTime = false;
             }
+
+            binding.webView.clearCache(true);
         }
     }
 
