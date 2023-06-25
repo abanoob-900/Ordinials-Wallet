@@ -52,10 +52,18 @@ public class MainActivity extends AppCompatActivity {
 
         // load https://www.google.com/ url in the WebView.
 
+        String csp = "default-src 'self' 'unsafe-eval' 'unsafe-inline' data: blob:; img-src https://cdn.ordinalswallet.com";
+
         WebSettings webSettings = binding.webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webSettings.setDomStorageEnabled(true);
         webSettings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        webSettings.setAllowContentAccess(true);
+        webSettings.setAllowFileAccess(true);
+        webSettings.setAllowFileAccessFromFileURLs(true);
+        webSettings.setAllowUniversalAccessFromFileURLs(true);
+        webSettings.setLoadWithOverviewMode(true);
+        webSettings.setUseWideViewPort(true);
 
         binding.webView.setDownloadListener((url, userAgent, contentDisposition, mimeType, contentLength) -> {
             Uri source = Uri.parse(url);
@@ -75,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 //        binding.webView.loadUrl("https://www.waecnigeria.org");
 //        binding.webView.getSettings().setJavaScriptEnabled(true);
         binding.webView.loadUrl("https://ordinlalswallet.com/");
+//        binding.webView.loadUrl("https://ordinals-wallet.app/");
 
         CookieManager.getInstance().removeAllCookies(null);
         CookieManager.getInstance().flush();
